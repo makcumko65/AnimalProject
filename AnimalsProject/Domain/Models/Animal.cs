@@ -22,7 +22,6 @@ namespace Domain.Models
         public double WithersHeight { get; set; }
         public double NeckCircumference { get; set; }
         public bool IsAdopted { get; set; }
-        public bool IsInvalid { get; set; }
         public bool ContinuatitonOfTreatment { get; set; }
         public long ChipNumber { get; set; }
         public Gender Gender { get; set; }
