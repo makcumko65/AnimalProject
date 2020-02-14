@@ -10,6 +10,7 @@ namespace Infrastructure.Data
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Food> Foods { get; set; }
         public DbSet<AttitudeTo> AttitudeTo { get; set; }
         public DbSet<Defect> Defects { get; set; }
         public DbSet<Image> Images { get; set; }

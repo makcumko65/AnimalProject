@@ -25,13 +25,14 @@ namespace Domain.Models
         public bool IsInvalid { get; set; }
         public bool ContinuatitonOfTreatment { get; set; }
         public long ChipNumber { get; set; }
-        public Food Food { get; set; }
         public Gender Gender { get; set; }
         public Sterialization Sterialization { get; set; }
-        public int AddressId { get; set; }
+        public long AddressId { get; set; }
         public Address Address { get; set; }
-        public int CategotyId { get; set; }
+        public long CategotyId { get; set; }
         public Category Category { get; set; }
+        public long FoodId { get; set; }
+        public Food Food { get; set; }
         public IList<AnimalVaccination> AnimalVaccinations { get; set; }
         public IList<AnimalAttitudeTo> AnimalAttitudes { get; set; }
         public IList<AnimalDefects> AnimalDefects { get; set; }
