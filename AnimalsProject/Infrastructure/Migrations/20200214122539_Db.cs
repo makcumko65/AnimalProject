@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class Init : Migration
+    public partial class Db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,6 +73,23 @@ namespace Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Defects", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Foods",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: true),
+                    LastModifiedBy = table.Column<string>(nullable: true),
+                    LastModified = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Foods", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,29 +179,34 @@ namespace Infrastructure.Migrations
                     IsInvalid = table.Column<bool>(nullable: false),
                     ContinuatitonOfTreatment = table.Column<bool>(nullable: false),
                     ChipNumber = table.Column<long>(nullable: false),
-                    Food = table.Column<int>(nullable: false),
                     Gender = table.Column<int>(nullable: false),
                     Sterialization = table.Column<int>(nullable: false),
-                    AddressId = table.Column<int>(nullable: false),
-                    AddressId1 = table.Column<long>(nullable: true),
-                    CategotyId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<long>(nullable: true)
+                    AddressId = table.Column<long>(nullable: false),
+                    CategotyId = table.Column<long>(nullable: false),
+                    CategoryId = table.Column<long>(nullable: true),
+                    FoodId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Animals", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Animals_Addresses_AddressId1",
-                        column: x => x.AddressId1,
+                        name: "FK_Animals_Addresses_AddressId",
+                        column: x => x.AddressId,
                         principalTable: "Addresses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Animals_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Animals_Foods_FoodId",
+                        column: x => x.FoodId,
+                        principalTable: "Foods",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -392,14 +414,19 @@ namespace Infrastructure.Migrations
                 column: "ProcessingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Animals_AddressId1",
+                name: "IX_Animals_AddressId",
                 table: "Animals",
-                column: "AddressId1");
+                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Animals_CategoryId",
                 table: "Animals",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Animals_FoodId",
+                table: "Animals",
+                column: "FoodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AnimalVaccination_VaccinationId",
@@ -461,6 +488,9 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Foods");
         }
     }
 }
