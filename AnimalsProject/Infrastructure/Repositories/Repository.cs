@@ -1,4 +1,5 @@
 ﻿using Domain.Interfaces;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace Infrastructure.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly DbContext Context;
+        protected readonly AnimalContext Context;
 
-        public Repository(DbContext context)
+        public Repository(AnimalContext context)
         {
-            this.Context = context;
+            Context = context;
         }
         public async Task AddAsync(TEntity entity)
         {
@@ -54,6 +55,11 @@ namespace Infrastructure.Repositories
         public async ValueTask<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await Context.Set<TEntity>().SingleOrDefaultAsync(predicate);
+        }
+
+        public async Task SaveAsync()
+        {
+            await Context.SaveChangesAsync();
         }
     }
 }
