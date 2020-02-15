@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class Db : Migration
+    public partial class initDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -176,14 +176,12 @@ namespace Infrastructure.Migrations
                     WithersHeight = table.Column<double>(nullable: false),
                     NeckCircumference = table.Column<double>(nullable: false),
                     IsAdopted = table.Column<bool>(nullable: false),
-                    IsInvalid = table.Column<bool>(nullable: false),
                     ContinuatitonOfTreatment = table.Column<bool>(nullable: false),
                     ChipNumber = table.Column<long>(nullable: false),
                     Gender = table.Column<int>(nullable: false),
                     Sterialization = table.Column<int>(nullable: false),
                     AddressId = table.Column<long>(nullable: false),
-                    CategotyId = table.Column<long>(nullable: false),
-                    CategoryId = table.Column<long>(nullable: true),
+                    CategoryId = table.Column<long>(nullable: false),
                     FoodId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -200,7 +198,7 @@ namespace Infrastructure.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Animals_Foods_FoodId",
                         column: x => x.FoodId,
@@ -386,6 +384,65 @@ namespace Infrastructure.Migrations
                         principalTable: "Animals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Addresses",
+                columns: new[] { "Id", "Created", "CreatedBy", "LastModified", "LastModifiedBy", "Name" },
+                values: new object[,]
+                {
+                    { 1L, null, null, null, null, "Berlin" },
+                    { 2L, null, null, null, null, "Hamburg" },
+                    { 3L, null, null, null, null, "Munich" },
+                    { 4L, null, null, null, null, "Cologne" },
+                    { 5L, null, null, null, null, "Frankfurt" },
+                    { 6L, null, null, null, null, "Stuttgart" },
+                    { 7L, null, null, null, null, "Dusseldorf" },
+                    { 8L, null, null, null, null, "Dortmund" },
+                    { 9L, null, null, null, null, "Essen" },
+                    { 10L, null, null, null, null, "Leipzig" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Created", "CreatedBy", "LastModified", "LastModifiedBy", "Name" },
+                values: new object[,]
+                {
+                    { 1L, null, null, null, null, "Dog" },
+                    { 2L, null, null, null, null, "Cat" },
+                    { 3L, null, null, null, null, "Others" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Foods",
+                columns: new[] { "Id", "Created", "CreatedBy", "LastModified", "LastModifiedBy", "Name" },
+                values: new object[,]
+                {
+                    { 1L, null, null, null, null, "Premium feed" },
+                    { 2L, null, null, null, null, "Medical feed" },
+                    { 3L, null, null, null, null, "Natural feed" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Animals",
+                columns: new[] { "Id", "AddressId", "CategoryId", "ChipNumber", "ContinuatitonOfTreatment", "Created", "CreatedBy", "DateOfBirth", "FoodId", "Gender", "IsAdopted", "LastModified", "LastModifiedBy", "NeckCircumference", "Sterialization", "Weight", "WithersHeight" },
+                values: new object[,]
+                {
+                    { 3L, 1L, 1L, 12245678L, true, null, null, new DateTime(2018, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 0, false, null, null, 10.199999999999999, 0, 15.5, 15.0 },
+                    { 5L, 1L, 1L, 12355678L, false, null, null, new DateTime(2018, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 1, false, null, null, 10.199999999999999, 0, 2.5, 15.0 },
+                    { 7L, 6L, 1L, 12345778L, true, null, null, new DateTime(2018, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 0, false, null, null, 10.199999999999999, 2, 25.5, 45.0 },
+                    { 8L, 2L, 1L, 12345688L, true, null, null, new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 0, false, null, null, 10.199999999999999, 0, 2.5, 15.0 },
+                    { 9L, 2L, 2L, 12345681L, false, null, null, new DateTime(2018, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 1, false, null, null, 1.2, 1, 12.5, 5.0 },
+                    { 12L, 1L, 1L, 444445688L, false, null, null, new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 0, false, null, null, 10.199999999999999, 0, 222.5, 15.0 },
+                    { 13L, 2L, 1L, 12342138L, true, null, null, new DateTime(2018, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 0, false, null, null, 10.199999999999999, 0, 2.5, 15.0 },
+                    { 14L, 2L, 1L, 32132688L, true, null, null, new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1L, 0, false, null, null, 10.199999999999999, 0, 42.5, 125.0 },
+                    { 2L, 2L, 2L, 13345678L, false, null, null, new DateTime(2017, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, 1, true, null, null, 9.1999999999999993, 2, 25.5, 45.0 },
+                    { 6L, 6L, 2L, 12346678L, true, null, null, new DateTime(2019, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, 0, false, null, null, 1.2, 0, 25.5, 45.0 },
+                    { 11L, 4L, 3L, 11145688L, true, null, null, new DateTime(2016, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, 1, false, null, null, 10.199999999999999, 0, 21.5, 5.0 },
+                    { 16L, 3L, 2L, 12345611L, true, null, null, new DateTime(2014, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 2L, 0, true, null, null, 10.199999999999999, 0, 2.5, 15.0 },
+                    { 4L, 4L, 3L, 12445678L, false, null, null, new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 3L, 0, false, null, null, 10.199999999999999, 1, 5.5, 5.0 },
+                    { 10L, 5L, 1L, 33345688L, true, null, null, new DateTime(2018, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 3L, 0, false, null, null, 10.199999999999999, 0, 2.5, 15.0 },
+                    { 15L, 4L, 2L, 88885688L, false, null, null, new DateTime(2012, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 3L, 1, true, null, null, 0.20000000000000001, 0, 2.5, 15.0 }
                 });
 
             migrationBuilder.CreateIndex(
