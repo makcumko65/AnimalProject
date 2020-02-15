@@ -8,5 +8,6 @@ namespace Domain.Models
         public Animal Animal { get; set; }
         public long AttitudeId { get; set; }
         public AttitudeTo AttitudeTo { get; set; }
+        public int Mark { get; set; }
     }
 }
