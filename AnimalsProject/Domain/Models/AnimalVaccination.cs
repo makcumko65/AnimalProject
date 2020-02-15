@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using System;
 
 namespace Domain.Models
 {
@@ -8,5 +9,8 @@ namespace Domain.Models
         public Animal Animal { get; set; }
         public long VaccinationId { get; set; }
         public Vaccination Vaccination { get; set; }
+        public DateTime VaccinationDate { get; set; }
+        public DateTime NextVaccinationDate { get; set; }
+
     }
 }

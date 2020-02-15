@@ -7,7 +7,7 @@ namespace Infrastructure.Data
 {
     public class AnimalContext : DbContext
     {
-        public AnimalContext(DbContextOptions options) : base(options){}
+        public AnimalContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Address> Addresses { get; set; }
@@ -431,6 +431,407 @@ namespace Infrastructure.Data
                         IsAdopted = true,
                     }
             );
+
+            modelBuilder.Entity<Vaccination>().HasData(
+                    new Vaccination
+                    {
+                        Id = 1,
+                        Type = "Common",
+                        Name = "Daramoon"
+                    },
+                    new Vaccination
+                    {
+                        Id = 2,
+                        Type = "Common",
+                        Name = "Vangard"
+                    },
+                    new Vaccination
+                    {
+                        Id = 3,
+                        Type = "Common",
+                        Name = "Nobivak"
+                    },
+                    new Vaccination
+                    {
+                        Id = 4,
+                        Type = "Rabies vaccine",
+                        Name = "Rabisin"
+                    },
+                    new Vaccination
+                    {
+                        Id = 5,
+                        Type = "Rabies vaccine",
+                        Name = "Rabistar"
+                    }
+            );
+
+            modelBuilder.Entity<Processing>().HasData(
+                    new Processing
+                    {
+                        Id = 1,
+                        Type = "Anti-flea and anti-ticks processing"
+                    },
+                    new Processing
+                    {
+                        Id = 2,
+                        Type = "Anti-worms processing"
+                    }
+                );
+
+            modelBuilder.Entity<Defect>().HasData(
+                    new Defect
+                    {
+                        Id = 1,
+                        Type = "Front pow disability"
+                    },
+                    new Defect
+                    {
+                        Id = 2,
+                        Type = "Back pow disability"
+                    },
+                    new Defect
+                    {
+                        Id = 3,
+                        Type = "Vision disability"
+                    },
+                    new Defect
+                    {
+                        Id = 4,
+                        Type = "Hearing disability"
+                    }
+                );
+
+            modelBuilder.Entity<AttitudeTo>().HasData(
+                    new AttitudeTo
+                    {
+                        Id = 1,
+                        Name = "Adults"
+                    },
+                    new AttitudeTo
+                    {
+                        Id = 2,
+                        Name = "Childrens"
+                    },
+                    new AttitudeTo
+                    {
+                        Id = 3,
+                        Name = "Cats"
+                    },
+                    new AttitudeTo
+                    {
+                        Id = 4,
+                        Name = "Dogs"
+                    }
+                );
+
+            modelBuilder.Entity<Needs>().HasData(
+                    new Needs
+                    {
+                        Id = 1,
+                        Name = "Need to be housed with other animals"
+                    },
+                    new Needs
+                    {
+                        Id = 2,
+                        Name = "Need to be housed apart from other animals"
+                    },
+                    new Needs
+                    {
+                        Id = 3,
+                        Name = "Need for a suitable diet"
+                    }
+                );
+
+            modelBuilder.Entity<Keeping>().HasData(
+                    new Keeping
+                    {
+                        Id = 1,
+                        Name = "Flat"
+                    },
+                    new Keeping
+                    {
+                        Id = 2,
+                        Name = "Enclosed house with yard"
+                    },
+                    new Keeping
+                    {
+                        Id = 3,
+                        Name = "Wintering only in the house"
+                    }
+                );
+
+            modelBuilder.Entity<AnimalVaccination>().HasData(
+                    new AnimalVaccination
+                    {
+                        AnimalId = 2,
+                        VaccinationId = 3,
+                        VaccinationDate = DateTime.Parse("12/11/2019"),
+                        NextVaccinationDate = DateTime.Parse("12/11/2020")
+                    },
+                    new AnimalVaccination
+                    {
+                        AnimalId = 2,
+                        VaccinationId = 4,
+                        VaccinationDate = DateTime.Parse("22/11/2019"),
+                        NextVaccinationDate = DateTime.Parse("22/11/2020")
+                    },
+                    new AnimalVaccination
+                    {
+                        AnimalId = 3,
+                        VaccinationId = 2,
+                        VaccinationDate = DateTime.Parse("9/11/2019"),
+                        NextVaccinationDate = DateTime.Parse("9/11/2020")
+                    },
+                    new AnimalVaccination
+                    {
+                        AnimalId = 5,
+                        VaccinationId = 1,
+                        VaccinationDate = DateTime.Parse("22/06/2018"),
+                        NextVaccinationDate = DateTime.Parse("22/06/2019")
+                    },
+                    new AnimalVaccination
+                    {
+                        AnimalId = 5,
+                        VaccinationId = 3,
+                        VaccinationDate = DateTime.Parse("22/06/2019"),
+                        NextVaccinationDate = DateTime.Parse("22/06/2020")
+                    },
+                    new AnimalVaccination
+                    {
+                        AnimalId = 5,
+                        VaccinationId = 5,
+                        VaccinationDate = DateTime.Parse("22/07/2019"),
+                        NextVaccinationDate = DateTime.Parse("22/07/2020")
+                    }
+                );
+
+            modelBuilder.Entity<AnimalProcessing>().HasData(
+                    new AnimalProcessing
+                    {
+                        AnimalId = 7,
+                        ProcessingId = 1,
+                        ProcessingDate = DateTime.Parse("12/08/2019"),
+                        NextProcessingDate = DateTime.Parse("12/01/2020")
+                    },
+                    new AnimalProcessing
+                    {
+                        AnimalId = 4,
+                        ProcessingId = 2,
+                        ProcessingDate = DateTime.Parse("13/02/2019"),
+                        NextProcessingDate = DateTime.Parse("13/08/2019")
+                    },
+                    new AnimalProcessing
+                    {
+                        AnimalId = 8,
+                        ProcessingId = 2,
+                        ProcessingDate = DateTime.Parse("9/11/2019"),
+                        NextProcessingDate = DateTime.Parse("9/11/2020")
+                    },
+                    new AnimalProcessing
+                    {
+                        AnimalId = 11,
+                        ProcessingId = 1,
+                        ProcessingDate = DateTime.Parse("06/06/2018"),
+                        NextProcessingDate = DateTime.Parse("06/12/2019")
+                    },
+                    new AnimalProcessing
+                    {
+                        AnimalId = 11,
+                        ProcessingId = 2,
+                        ProcessingDate = DateTime.Parse("06/12/2019"),
+                        NextProcessingDate = DateTime.Parse("06/06/2020")
+                    },
+                    new AnimalProcessing
+                    {
+                        AnimalId = 9,
+                        ProcessingId = 2,
+                        ProcessingDate = DateTime.Parse("02/02/2019"),
+                        NextProcessingDate = DateTime.Parse("02/02/2020")
+                    }
+               );
+
+            modelBuilder.Entity<AnimalDefects>().HasData(
+                     new AnimalDefects
+                     {
+                         AnimalId = 13,
+                         DefectsId = 1
+                     },
+                     new AnimalDefects
+                     {
+                         AnimalId = 10,
+                         DefectsId = 2
+                     },
+                     new AnimalDefects
+                     {
+                         AnimalId = 8,
+                         DefectsId = 1
+                     },
+                     new AnimalDefects
+                     {
+                         AnimalId = 11,
+                         DefectsId = 4,
+                     }
+                 );
+
+            modelBuilder.Entity<AnimalAttitudeTo>().HasData(
+                   new AnimalAttitudeTo
+                   {
+                       AnimalId = 4,
+                       AttitudeId = 1,
+                       Mark = 3
+                   },
+                   new AnimalAttitudeTo
+                   {
+                       AnimalId = 2,
+                       AttitudeId = 2,
+                       Mark = 3
+                   },
+                   new AnimalAttitudeTo
+                   {
+                       AnimalId = 12,
+                       AttitudeId = 1,
+                       Mark = 3
+                   },
+                   new AnimalAttitudeTo
+                   {
+                       AnimalId = 11,
+                       AttitudeId = 4,
+                       Mark = 2
+                   },
+                   new AnimalAttitudeTo
+                   {
+                       AnimalId = 11,
+                       AttitudeId = 1,
+                       Mark = 5
+                   },
+                   new AnimalAttitudeTo
+                   {
+                       AnimalId = 11,
+                       AttitudeId = 3,
+                       Mark = 4
+                   }
+               );
+
+            modelBuilder.Entity<AnimalNeeds>().HasData(
+                  new AnimalNeeds
+                  {
+                      AnimalId = 2,
+                      NeedsId = 3
+                  },
+                  new AnimalNeeds
+                  {
+                      AnimalId = 2,
+                      NeedsId = 2
+                  },
+                  new AnimalNeeds
+                  {
+                      AnimalId = 3,
+                      NeedsId = 1
+                  },
+                  new AnimalNeeds
+                  {
+                      AnimalId = 7,
+                      NeedsId = 3
+                  },
+                  new AnimalNeeds
+                  {
+                      AnimalId = 8,
+                      NeedsId = 2
+                  },
+                  new AnimalNeeds
+                  {
+                      AnimalId = 14,
+                      NeedsId = 1
+                  }
+              );
+
+            modelBuilder.Entity<AnimalKeeping>().HasData(
+                  new AnimalKeeping
+                  {
+                      AnimalId = 2,
+                      KeepingId = 3
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 2,
+                      KeepingId = 1
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 3,
+                      KeepingId = 3
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 4,
+                      KeepingId = 2
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 5,
+                      KeepingId = 1
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 6,
+                      KeepingId = 2
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 7,
+                      KeepingId = 1
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 8,
+                      KeepingId = 2
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 9,
+                      KeepingId = 1
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 10,
+                      KeepingId = 2
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 11,
+                      KeepingId = 1
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 12,
+                      KeepingId = 2
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 12,
+                      KeepingId = 1
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 13,
+                      KeepingId = 1
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 14,
+                      KeepingId = 2
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 15,
+                      KeepingId = 1
+                  },
+                  new AnimalKeeping
+                  {
+                      AnimalId = 16,
+                      KeepingId = 1
+                  }
+              );
         }
 
     }
