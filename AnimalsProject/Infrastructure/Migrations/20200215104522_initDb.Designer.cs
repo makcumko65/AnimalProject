@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    [Migration("20200214194229_Db update")]
-    partial class Dbupdate
+    [Migration("20200215104522_initDb")]
+    partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -110,10 +110,7 @@ namespace Infrastructure.Migrations
                     b.Property<long>("AddressId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("CategoryId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("CategotyId")
+                    b.Property<long>("CategoryId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("ChipNumber")
@@ -173,7 +170,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 2L,
                             AddressId = 2L,
-                            CategotyId = 2L,
+                            CategoryId = 2L,
                             ChipNumber = 13345678L,
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2017, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -189,7 +186,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 3L,
                             AddressId = 1L,
-                            CategotyId = 1L,
+                            CategoryId = 1L,
                             ChipNumber = 12245678L,
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -205,7 +202,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 4L,
                             AddressId = 4L,
-                            CategotyId = 3L,
+                            CategoryId = 3L,
                             ChipNumber = 12445678L,
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -221,7 +218,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 5L,
                             AddressId = 1L,
-                            CategotyId = 1L,
+                            CategoryId = 1L,
                             ChipNumber = 12355678L,
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2018, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -237,7 +234,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 6L,
                             AddressId = 6L,
-                            CategotyId = 2L,
+                            CategoryId = 2L,
                             ChipNumber = 12346678L,
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2019, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -253,7 +250,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 7L,
                             AddressId = 6L,
-                            CategotyId = 1L,
+                            CategoryId = 1L,
                             ChipNumber = 12345778L,
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -269,11 +266,139 @@ namespace Infrastructure.Migrations
                         {
                             Id = 8L,
                             AddressId = 2L,
-                            CategotyId = 1L,
+                            CategoryId = 1L,
                             ChipNumber = 12345688L,
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
+                            Gender = 0,
+                            IsAdopted = false,
+                            NeckCircumference = 10.199999999999999,
+                            Sterialization = 0,
+                            Weight = 2.5,
+                            WithersHeight = 15.0
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            AddressId = 2L,
+                            CategoryId = 2L,
+                            ChipNumber = 12345681L,
+                            ContinuatitonOfTreatment = false,
+                            DateOfBirth = new DateTime(2018, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 1L,
+                            Gender = 1,
+                            IsAdopted = false,
+                            NeckCircumference = 1.2,
+                            Sterialization = 1,
+                            Weight = 12.5,
+                            WithersHeight = 5.0
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            AddressId = 5L,
+                            CategoryId = 1L,
+                            ChipNumber = 33345688L,
+                            ContinuatitonOfTreatment = true,
+                            DateOfBirth = new DateTime(2018, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 3L,
+                            Gender = 0,
+                            IsAdopted = false,
+                            NeckCircumference = 10.199999999999999,
+                            Sterialization = 0,
+                            Weight = 2.5,
+                            WithersHeight = 15.0
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            AddressId = 4L,
+                            CategoryId = 3L,
+                            ChipNumber = 11145688L,
+                            ContinuatitonOfTreatment = true,
+                            DateOfBirth = new DateTime(2016, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 2L,
+                            Gender = 1,
+                            IsAdopted = false,
+                            NeckCircumference = 10.199999999999999,
+                            Sterialization = 0,
+                            Weight = 21.5,
+                            WithersHeight = 5.0
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            AddressId = 1L,
+                            CategoryId = 1L,
+                            ChipNumber = 444445688L,
+                            ContinuatitonOfTreatment = false,
+                            DateOfBirth = new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 1L,
+                            Gender = 0,
+                            IsAdopted = false,
+                            NeckCircumference = 10.199999999999999,
+                            Sterialization = 0,
+                            Weight = 222.5,
+                            WithersHeight = 15.0
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            AddressId = 2L,
+                            CategoryId = 1L,
+                            ChipNumber = 12342138L,
+                            ContinuatitonOfTreatment = true,
+                            DateOfBirth = new DateTime(2018, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 1L,
+                            Gender = 0,
+                            IsAdopted = false,
+                            NeckCircumference = 10.199999999999999,
+                            Sterialization = 0,
+                            Weight = 2.5,
+                            WithersHeight = 15.0
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            AddressId = 2L,
+                            CategoryId = 1L,
+                            ChipNumber = 32132688L,
+                            ContinuatitonOfTreatment = true,
+                            DateOfBirth = new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 1L,
+                            Gender = 0,
+                            IsAdopted = false,
+                            NeckCircumference = 10.199999999999999,
+                            Sterialization = 0,
+                            Weight = 42.5,
+                            WithersHeight = 125.0
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            AddressId = 4L,
+                            CategoryId = 2L,
+                            ChipNumber = 88885688L,
+                            ContinuatitonOfTreatment = false,
+                            DateOfBirth = new DateTime(2012, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 3L,
+                            Gender = 1,
+                            IsAdopted = true,
+                            NeckCircumference = 0.20000000000000001,
+                            Sterialization = 0,
+                            Weight = 2.5,
+                            WithersHeight = 15.0
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            AddressId = 3L,
+                            CategoryId = 2L,
+                            ChipNumber = 12345611L,
+                            ContinuatitonOfTreatment = true,
+                            DateOfBirth = new DateTime(2014, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoodId = 2L,
                             Gender = 0,
                             IsAdopted = true,
                             NeckCircumference = 10.199999999999999,
@@ -701,7 +826,9 @@ namespace Infrastructure.Migrations
 
                     b.HasOne("Domain.Models.Category", "Category")
                         .WithMany("Animals")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Models.Food", "Food")
                         .WithMany("Animals")

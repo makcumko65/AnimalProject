@@ -28,7 +28,7 @@ namespace Domain.Models
         public Sterialization Sterialization { get; set; }
         public long AddressId { get; set; }
         public Address Address { get; set; }
-        public long CategotyId { get; set; }
+        public long CategoryId { get; set; }
         public Category Category { get; set; }
         public long FoodId { get; set; }
         public Food Food { get; set; }
