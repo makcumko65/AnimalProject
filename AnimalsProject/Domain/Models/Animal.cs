@@ -17,6 +17,7 @@ namespace Domain.Models
             AnimalDefects = new List<AnimalDefects>();
             Images = new List<Image>();
         }
+        public long Id { get; set; }
         public DateTime DateOfBirth { get; set; }
         public double Weight { get; set; }
         public double WithersHeight { get; set; }

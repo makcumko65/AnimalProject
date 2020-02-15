@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 
 namespace Domain.Models
 {
-    public class AnimalProcessing
+    public class AnimalProcessing : AnimalBase
     {
         public long AnimalId { get; set; }
         public Animal Animal { get; set; }

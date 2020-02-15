@@ -1,6 +1,8 @@
-﻿namespace Domain.Models
+﻿using Domain.Common;
+
+namespace Domain.Models
 {
-    public class AnimalKeeping
+    public class AnimalKeeping : AnimalBase
     {
         public long AnimalId { get; set; }
         public Animal Animal { get; set; }

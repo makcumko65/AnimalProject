@@ -9,6 +9,7 @@ namespace Domain.Models
         {
             AnimalKeepings = new List<AnimalKeeping>();
         }
+        public long Id { get; set; }
         public string Name { get; set; }
         public IList<AnimalKeeping> AnimalKeepings { get; set; }
     }
