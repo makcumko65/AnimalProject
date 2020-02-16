@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Interfaces
@@ -17,12 +16,13 @@ namespace Domain.Interfaces
         ValueTask<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
 
         Task AddAsync(TEntity entity);
+        Task Update(TEntity obj);
 
         Task AddRangeAsync(IEnumerable<TEntity> entities);
 
-        void Remove(TEntity entity);
+        Task Remove(TEntity entity);
 
-        void RemoveRange(IEnumerable<TEntity> entities);
+        Task RemoveRange(IEnumerable<TEntity> entities);
 
         Task SaveAsync();
     }
