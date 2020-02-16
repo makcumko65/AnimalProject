@@ -1,6 +1,7 @@
 ﻿using Domain.Common;
 using Domain.Enums;
-using System;   
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
 namespace Domain.Models
@@ -17,22 +18,45 @@ namespace Domain.Models
             AnimalDefects = new List<AnimalDefects>();
             Images = new List<Image>();
         }
-        public long Id { get; set; }
+
+        
+        public long Id { get; set; } 
+
+        
         public DateTime DateOfBirth { get; set; }
+
         public double Weight { get; set; }
+
         public double WithersHeight { get; set; }
+
         public double NeckCircumference { get; set; }
+        
+        //req
         public bool IsAdopted { get; set; }
+
+        //req
         public bool ContinuatitonOfTreatment { get; set; }
+
+        //req
         public long ChipNumber { get; set; }
+
+        //req
         public Gender Gender { get; set; }
+
         public Sterialization Sterialization { get; set; }
+
+        
         public long AddressId { get; set; }
         public Address Address { get; set; }
+
+        
         public long CategoryId { get; set; }
         public Category Category { get; set; }
+
+        
         public long FoodId { get; set; }
         public Food Food { get; set; }
+
         public IList<AnimalVaccination> AnimalVaccinations { get; set; }
         public IList<AnimalAttitudeTo> AnimalAttitudes { get; set; }
         public IList<AnimalDefects> AnimalDefects { get; set; }
