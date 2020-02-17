@@ -19,6 +19,11 @@ namespace Infrastructure.Data.ModelConfigurations
                 .WithMany(a => a.AnimalVaccinations)
                 .HasForeignKey(at => at.VaccinationId);
 
+            builder.Property(av => av.AnimalId).IsRequired();
+            builder.Property(av => av.VaccinationId).IsRequired();
+            builder.Property(av => av.VaccinationDate).IsRequired();
+            builder.Property(av => av.NextVaccinationDate).IsRequired();
+
             DataSeedConfigure(builder);
         }
 

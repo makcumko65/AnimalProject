@@ -8,6 +8,9 @@ namespace Infrastructure.Data.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Food> builder)
         {
+            builder.Property(fd => fd.Id).ValueGeneratedOnAdd();
+            builder.Property(fd => fd.Name).IsRequired().HasMaxLength(200);
+
             DataSeedConfigure(builder);
         }
 

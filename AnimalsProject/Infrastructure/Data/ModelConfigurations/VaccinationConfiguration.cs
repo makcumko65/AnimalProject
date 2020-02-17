@@ -8,6 +8,10 @@ namespace Infrastructure.Data.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Vaccination> builder)
         {
+            builder.Property(vc => vc.Id).ValueGeneratedOnAdd();
+            builder.Property(vc => vc.Name).IsRequired().HasMaxLength(200);
+            builder.Property(vc => vc.Type).IsRequired().HasMaxLength(200);
+
             DataSeedConfigure(builder);
         }
 

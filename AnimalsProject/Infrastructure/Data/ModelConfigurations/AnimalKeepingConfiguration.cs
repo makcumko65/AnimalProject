@@ -18,6 +18,9 @@ namespace Infrastructure.Data.ModelConfigurations
                 .WithMany(a => a.AnimalKeepings)
                 .HasForeignKey(at => at.KeepingId);
 
+            builder.Property(anKeep => anKeep.AnimalId).IsRequired();
+            builder.Property(anKeep => anKeep.KeepingId).IsRequired();
+
             DataSeedConfigure(builder);
         }
 

@@ -18,6 +18,9 @@ namespace Infrastructure.Data.ModelConfigurations
                 .WithMany(a => a.AnimalDefects)
                 .HasForeignKey(at => at.DefectsId);
 
+            builder.Property(anDef => anDef.AnimalId).IsRequired();
+            builder.Property(anDef => anDef.DefectsId).IsRequired();
+
             DataSeedConfigure(builder);
         }
 

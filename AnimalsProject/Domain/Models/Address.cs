@@ -12,7 +12,6 @@ namespace Domain.Models
         }
         
         public long Id { get; set; }
-        //required
         public string Name { get; set; }
         public IList<Animal> Animals { get; set; }
     }

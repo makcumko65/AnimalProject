@@ -8,6 +8,9 @@ namespace Infrastructure.Data.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<AttitudeTo> builder)
         {
+            builder.Property(att => att.Id).ValueGeneratedOnAdd();
+            builder.Property(att => att.Name).IsRequired().HasMaxLength(250);
+
             DataSeedConfigure(builder);
         }
 

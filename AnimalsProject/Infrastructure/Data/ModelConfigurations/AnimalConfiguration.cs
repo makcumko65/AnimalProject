@@ -10,6 +10,15 @@ namespace Infrastructure.Data.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Animal> builder)
         {
+            builder.Property(animl => animl.Id).ValueGeneratedOnAdd();
+            builder.Property(animl => animl.IsAdopted).IsRequired();
+            builder.Property(animl => animl.ContinuatitonOfTreatment).IsRequired();
+            builder.Property(animl => animl.IsAdopted).IsRequired();
+            builder.Property(animl => animl.Gender).IsRequired();
+            builder.Property(animl => animl.FoodId).IsRequired();
+            builder.Property(animl => animl.CategoryId).IsRequired();
+            builder.Property(animl => animl.AddressId).IsRequired();
+
             DataSeedConfigure(builder);
         }
 

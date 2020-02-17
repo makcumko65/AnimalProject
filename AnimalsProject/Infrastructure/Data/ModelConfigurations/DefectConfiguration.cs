@@ -8,6 +8,9 @@ namespace Infrastructure.Data.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Defect> builder)
         {
+            builder.Property(def => def.Id).ValueGeneratedOnAdd();
+            builder.Property(def => def.Type).IsRequired().HasMaxLength(200);
+
             DataSeedConfigure(builder);
         }
 

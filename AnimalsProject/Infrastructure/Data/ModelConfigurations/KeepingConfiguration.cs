@@ -8,6 +8,9 @@ namespace Infrastructure.Data.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Keeping> builder)
         {
+            builder.Property(kp => kp.Id).ValueGeneratedOnAdd();
+            builder.Property(kp => kp.Name).IsRequired().HasMaxLength(200);
+
             DataSeedConfigure(builder);
         }
 

@@ -19,6 +19,11 @@ namespace Infrastructure.Data.ModelConfigurations
                 .WithMany(a => a.AnimalProcessings)
                 .HasForeignKey(at => at.ProcessingId);
 
+            builder.Property(ap => ap.AnimalId).IsRequired();
+            builder.Property(ap => ap.ProcessingId).IsRequired();
+            builder.Property(ap => ap.ProcessingDate).IsRequired();
+            builder.Property(ap => ap.NextProcessingDate).IsRequired();
+
             DataSeedConfigure(builder);
         }
 

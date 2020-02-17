@@ -8,6 +8,9 @@ namespace Infrastructure.Data.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Needs> builder)
         {
+            builder.Property(nd => nd.Id).ValueGeneratedOnAdd();
+            builder.Property(nd => nd.Name).IsRequired().HasMaxLength(200);
+
             DataSeedConfigure(builder);
         }
 
