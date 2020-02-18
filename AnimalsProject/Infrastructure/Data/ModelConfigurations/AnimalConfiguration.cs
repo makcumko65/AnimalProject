@@ -19,6 +19,8 @@ namespace Infrastructure.Data.ModelConfigurations
             builder.Property(animl => animl.AddressId).IsRequired();
             builder.Property(animl => animl.Name).IsRequired().HasMaxLength(200);
             builder.Property(animl => animl.DateOfBirth).IsRequired();
+            builder.Property(animl => animl.Weight).IsRequired();
+            builder.Property(animl => animl.WithersHeight).IsRequired();
 
             DataSeedConfigure(builder);
         }
