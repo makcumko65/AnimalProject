@@ -218,7 +218,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     { 
                         Id = 13,
-                        Name = "Aladin",
+                        Name = "Alkadin",
                         CategoryId = 1,
                         AddressId = 2,
                         FoodId = 1,
