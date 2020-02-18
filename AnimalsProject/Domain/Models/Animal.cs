@@ -19,8 +19,8 @@ namespace Domain.Models
             Images = new List<Image>();
         }
  
-        public long Id { get; set; }  
-
+        public long Id { get; set; } 
+        public string Name { get; set; }
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         public double Weight { get; set; }

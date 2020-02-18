@@ -14,10 +14,11 @@ namespace Infrastructure.Data.ModelConfigurations
             builder.Property(animl => animl.IsAdopted).IsRequired();
             builder.Property(animl => animl.ContinuatitonOfTreatment).IsRequired();
             builder.Property(animl => animl.IsAdopted).IsRequired();
-            builder.Property(animl => animl.Gender).IsRequired();
-            builder.Property(animl => animl.FoodId).IsRequired();
+            builder.Property(animl => animl.Gender).IsRequired();   
             builder.Property(animl => animl.CategoryId).IsRequired();
             builder.Property(animl => animl.AddressId).IsRequired();
+            builder.Property(animl => animl.Name).IsRequired().HasMaxLength(200);
+            builder.Property(animl => animl.DateOfBirth).IsRequired();
 
             DataSeedConfigure(builder);
         }
@@ -28,6 +29,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 2,
+                        Name = "Lola",
                         CategoryId = 2,
                         AddressId = 2,
                         FoodId = 2,
@@ -44,6 +46,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 3,
+                        Name = "Josh",
                         CategoryId = 1,
                         AddressId = 1,
                         FoodId = 1,
@@ -60,6 +63,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 4,
+                        Name = "Jimbo",
                         CategoryId = 3,
                         AddressId = 4,
                         FoodId = 3,
@@ -76,6 +80,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 5,
+                        Name = "Arnold",
                         CategoryId = 1,
                         AddressId = 1,
                         FoodId = 1,
@@ -92,6 +97,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 6,
+                        Name = "Sonia",
                         CategoryId = 2,
                         AddressId = 6,
                         FoodId = 2,
@@ -108,6 +114,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 7,
+                        Name = "Havoc",
                         CategoryId = 1,
                         AddressId = 6,
                         FoodId = 1,
@@ -124,6 +131,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 8,
+                        Name = "Khora",
                         CategoryId = 1,
                         AddressId = 2,
                         FoodId = 1,
@@ -140,6 +148,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 9,
+                        Name = "Alpaca",
                         CategoryId = 2,
                         AddressId = 2,
                         FoodId = 1,
@@ -156,6 +165,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 10,
+                        Name = "Bee",
                         CategoryId = 1,
                         AddressId = 5,
                         FoodId = 3,
@@ -172,6 +182,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 11,
+                        Name = "Puma",
                         CategoryId = 3,
                         AddressId = 4,
                         FoodId = 2,
@@ -188,6 +199,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 12,
+                        Name = "Aladin",
                         CategoryId = 1,
                         AddressId = 1,
                         FoodId = 1,
@@ -202,8 +214,9 @@ namespace Infrastructure.Data.ModelConfigurations
                         IsAdopted = false,
                     },
                     new Animal
-                    {
+                    { 
                         Id = 13,
+                        Name = "Aladin",
                         CategoryId = 1,
                         AddressId = 2,
                         FoodId = 1,
@@ -220,6 +233,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 14,
+                        Name = "Neo",
                         CategoryId = 1,
                         AddressId = 2,
                         FoodId = 1,
@@ -236,6 +250,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 15,
+                        Name = "Theo",
                         CategoryId = 2,
                         AddressId = 4,
                         FoodId = 3,
@@ -252,6 +267,7 @@ namespace Infrastructure.Data.ModelConfigurations
                     new Animal
                     {
                         Id = 16,
+                        Name = "Baron",
                         CategoryId = 2,
                         AddressId = 3,
                         FoodId = 2,
@@ -265,7 +281,7 @@ namespace Infrastructure.Data.ModelConfigurations
                         NeckCircumference = 10.2,
                         IsAdopted = true,
                     }
-            );
+            ); 
         }
     }
 }
