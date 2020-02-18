@@ -8,6 +8,7 @@ using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,13 @@ namespace Api
                     Configuration
                     .GetConnectionString("AnimalProjectConnectionString"));
             });
+
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                  options => { 
+                      options.SignIn.RequireConfirmedAccount = true;
+                      options.User.RequireUniqueEmail = true;
+                  })
+                    .AddEntityFrameworkStores<AnimalContext>();
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }

@@ -1,11 +1,12 @@
 ﻿using Domain.Enums;
 using Domain.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Infrastructure.Data
 {
-    public class AnimalContext : DbContext
+    public class AnimalContext : IdentityDbContext
     {
         public AnimalContext(DbContextOptions options) : base(options) { }
 
