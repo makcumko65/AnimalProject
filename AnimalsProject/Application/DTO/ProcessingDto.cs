@@ -2,7 +2,7 @@
 
 namespace Application.DTO
 {
-    public class DefectDto : AnimalBase
+    public class ProcessingDto : AnimalBase
     {
         public long Id { get; set; }
         public string Type { get; set; }

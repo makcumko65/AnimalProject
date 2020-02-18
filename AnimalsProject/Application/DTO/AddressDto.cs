@@ -2,9 +2,9 @@
 
 namespace Application.DTO
 {
-    public class DefectDto : AnimalBase
+    public class AddressDto : AnimalBase
     {
         public long Id { get; set; }
-        public string Type { get; set; }
+        public string Name { get; set; }
     }
 }
