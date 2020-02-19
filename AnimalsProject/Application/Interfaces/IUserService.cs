@@ -5,9 +5,9 @@ namespace Application.Interfaces
 {
     public interface IUserService
     {
-        Task<bool> RegisterAsync(AdminRegisterDto model);
+        Task<bool> RegisterAsync(AdminDto model);
 
-        Task<string> LoginAsync(AdminLoginDto model);
+        Task<string> LoginAsync(AdminDto model);
 
         Task<bool> ConfirmEmailAsync(string userId, string token);
     }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Application.DTO
+﻿namespace Application.DTO
 {
-    public class AdminLoginDto
+    public class AdminDto
     {
         public string Email { get; set; }
 

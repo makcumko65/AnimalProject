@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
@@ -13,54 +14,65 @@ namespace Application.Services
     {
         private readonly UserManager<IdentityUser> _userManager;
 
+        private readonly IHostingEnvironment _environment;
+
         private readonly IConfiguration _configuration;
 
         private readonly IEmailSender _emailService;
 
-        public UserService(UserManager<IdentityUser> userManager, IConfiguration configuration, IEmailSender emailService)
+        public UserService(UserManager<IdentityUser> userManager, 
+            IConfiguration configuration, 
+            IEmailSender emailService, 
+            IHostingEnvironment envorinment)
         {
             _userManager = userManager;
             _configuration = configuration;
             _emailService = emailService;
+            _environment = envorinment;
         }
 
-        public async Task<bool> RegisterAsync(AdminRegisterDto model)
+        public async Task<bool> RegisterAsync(AdminDto model)
         {
             if (model == null)
                 return false;
 
-            var identityUser = new IdentityUser
-            {
-                UserName = model.UserName,
-                Email = model.Email
-            };
+            var admin = await _userManager.FindByEmailAsync(model.Email);
 
-            var result = await _userManager.CreateAsync(identityUser, model.Password);
+            if(admin == null)
+            {
+                return false;
+            }
+
+            var result = await _userManager.AddPasswordAsync(admin, model.Password);
 
             if (result.Succeeded)
             {
-                var confirmEmailToken = await _userManager.GenerateEmailConfirmationTokenAsync(identityUser);
+                var confirmEmailToken = await _userManager.GenerateEmailConfirmationTokenAsync(admin);
 
                 var encodedEmailToken = Encoding.UTF8.GetBytes(confirmEmailToken);
                 var validEmailToken = WebEncoders.Base64UrlEncode(encodedEmailToken);
 
-                string url = $"{_configuration["JwtAuth:JwtIssuer"]}/api/auth/confirmemail?userid={identityUser.Id}&token={validEmailToken}";
-                
-                await _emailService.SendEmailAsync(identityUser.Email, "Confirm your email", $"<h1>Welcome to Auth Demo</h1>" +
-                    $"<p>Please confirm your email by <a href='{url}'>Clicking here</a></p>");
+                string url = $"{_configuration["JwtAuth:JwtIssuer"]}/api/account/confirmemail?userid={admin.Id}&token={validEmailToken}";
+
+                var emailTemplateService = new EmailTemplateService(_configuration, _environment);
+
+                var formatedTemplateContent = string.Format(emailTemplateService.GetTemplateContent(), url);
+
+                await _emailService.SendEmailAsync(admin.Email, "Confirmation email", formatedTemplateContent);
 
                 return true;
             }
             return false;
         }
 
-        public async Task<string> LoginAsync(AdminLoginDto model)
+        public async Task<string> LoginAsync(AdminDto model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
 
-            if (user == null)
+            if (user == null || !user.EmailConfirmed)
                 return null;
 
+            
             var result = await _userManager.CheckPasswordAsync(user, model.Password);
 
             if (!result)
