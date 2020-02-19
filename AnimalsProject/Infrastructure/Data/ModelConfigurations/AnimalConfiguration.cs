@@ -44,6 +44,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.NotForHealthReasons,
                         NeckCircumference = 9.2,
                         IsAdopted = true,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/08/2018")
                     },
                     new Animal
                     {
@@ -61,6 +63,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/11/2018")
                     },
                     new Animal
                     {
@@ -78,6 +82,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.NotByAge,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("15/08/2018")
                     },
                     new Animal
                     {
@@ -95,6 +101,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/08/2019")
                     },
                     new Animal
                     {
@@ -112,6 +120,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 1.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/12/2019")
                     },
                     new Animal
                     {
@@ -129,6 +139,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.NotForHealthReasons,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/10/2019")
                     },
                     new Animal
                     {
@@ -146,6 +158,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("17/08/2019")
                     },
                     new Animal
                     {
@@ -163,6 +177,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.NotByAge,
                         NeckCircumference = 1.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/11/2018")
                     },
                     new Animal
                     {
@@ -180,6 +196,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/11/2018")
                     },
                     new Animal
                     {
@@ -197,6 +215,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/08/2018")
                     },
                     new Animal
                     {
@@ -214,9 +234,11 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/08/2020")
                     },
                     new Animal
-                    { 
+                    {
                         Id = 13,
                         Name = "Alkadin",
                         CategoryId = 1,
@@ -231,6 +253,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("10/08/2018")
                     },
                     new Animal
                     {
@@ -248,6 +272,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = false,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("11/11/2018")
                     },
                     new Animal
                     {
@@ -265,6 +291,8 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 0.2,
                         IsAdopted = true,
+                        IsHidden = false,
+                        FoundDate = DateTime.Parse("18/08/2015")
                     },
                     new Animal
                     {
@@ -282,8 +310,10 @@ namespace Infrastructure.Data.ModelConfigurations
                         Sterialization = Sterialization.Yes,
                         NeckCircumference = 10.2,
                         IsAdopted = true,
+                        IsHidden = true,
+                        FoundDate = DateTime.Parse("18/06/2018")
                     }
-            ); 
+            ) ; 
         }
     }
 }
