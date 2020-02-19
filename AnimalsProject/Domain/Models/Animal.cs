@@ -39,7 +39,6 @@ namespace Domain.Models
         public Category Category { get; set; }
         public long FoodId { get; set; }
         public Food Food { get; set; }
-
         public IList<AnimalVaccination> AnimalVaccinations { get; set; }
         public IList<AnimalAttitudeTo> AnimalAttitudes { get; set; }
         public IList<AnimalDefects> AnimalDefects { get; set; }
