@@ -11,55 +11,65 @@ namespace Infrastructure.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly AnimalContext Context;
+        protected readonly AnimalContext context;
 
         public Repository(AnimalContext context)
         {
-            Context = context;
+            this.context = context;
         }
         public async Task AddAsync(TEntity entity)
         {
-            await Context.Set<TEntity>().AddAsync(entity);
+            await context.Set<TEntity>().AddAsync(entity);
+            await SaveAsync();
         }
 
         public async Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
-            await Context.Set<TEntity>().AddRangeAsync(entities);
+            await context.Set<TEntity>().AddRangeAsync(entities);
+            await SaveAsync();
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return Context.Set<TEntity>().Where(predicate);
+            return context.Set<TEntity>().Where(predicate);
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await Context.Set<TEntity>().ToListAsync();
+            return await context.Set<TEntity>().ToListAsync();
         }
 
         public async ValueTask<TEntity> GetByIdAsync(int id)
         {
-            return await Context.Set<TEntity>().FindAsync(id);
+            return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public void Remove(TEntity entity)
+        public async Task Remove(TEntity entity)
         {
-            Context.Set<TEntity>().Remove(entity);
+            context.Set<TEntity>().Remove(entity);
+            await SaveAsync();
         }
 
-        public void RemoveRange(IEnumerable<TEntity> entities)
+        public async Task RemoveRange(IEnumerable<TEntity> entities)
         {
-            Context.Set<TEntity>().RemoveRange(entities);
+            context.Set<TEntity>().RemoveRange(entities);
+            await SaveAsync();
         }
 
         public async ValueTask<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await Context.Set<TEntity>().SingleOrDefaultAsync(predicate);
+            return await context.Set<TEntity>().SingleOrDefaultAsync(predicate);
         }
 
         public async Task SaveAsync()
         {
-            await Context.SaveChangesAsync();
+            await context.SaveChangesAsync();
+        }
+
+        public async Task Update(TEntity obj)
+        {
+            context.Set<TEntity>().Update(obj);
+            await SaveAsync();
         }
     }
 }
