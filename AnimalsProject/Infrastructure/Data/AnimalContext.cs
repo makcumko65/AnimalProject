@@ -1,5 +1,6 @@
 ﻿using Domain.Enums;
 using Domain.Models;
+using Infrastructure.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -35,6 +36,9 @@ namespace Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
 
             modelBuilder.Entity<AnimalAttitudeTo>()
                 .HasKey(at => new { at.AnimalId, at.AttitudeId });

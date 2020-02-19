@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public class UserService: IUserService
+    public class UserService : IUserService
     {
         private readonly UserManager<IdentityUser> _userManager;
+
+        private readonly SignInManager<IdentityUser> _signInManager;
 
         private readonly IHostingEnvironment _environment;
 
@@ -20,12 +22,14 @@ namespace Application.Services
 
         private readonly IEmailSender _emailService;
 
-        public UserService(UserManager<IdentityUser> userManager, 
-            IConfiguration configuration, 
-            IEmailSender emailService, 
-            IHostingEnvironment envorinment)
+        public UserService(UserManager<IdentityUser> userManager,
+                           SignInManager<IdentityUser> signInManager,
+                           IConfiguration configuration,
+                           IEmailSender emailService,
+                           IHostingEnvironment envorinment)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _configuration = configuration;
             _emailService = emailService;
             _environment = envorinment;
@@ -38,7 +42,7 @@ namespace Application.Services
 
             var admin = await _userManager.FindByEmailAsync(model.Email);
 
-            if(admin == null)
+            if (admin == null)
             {
                 return false;
             }
@@ -67,21 +71,18 @@ namespace Application.Services
 
         public async Task<string> LoginAsync(AdminDto model)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var signInResult = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
-            if (user == null || !user.EmailConfirmed)
-                return null;
+            if (signInResult.Succeeded)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
 
-            
-            var result = await _userManager.CheckPasswordAsync(user, model.Password);
+                var tokenService = new TokenService(_configuration, _userManager);
 
-            if (!result)
-                return null;
+                return await tokenService.GenerateJwtToken(model.Email, user);
+            }
+            return null;
 
-            var tokenService = new TokenService(_configuration, _userManager);
-
-            return await tokenService.GenerateJwtToken(model.Email, user);
-            
         }
 
         public async Task<bool> ConfirmEmailAsync(string userId, string token)
@@ -90,12 +91,38 @@ namespace Application.Services
             if (user == null)
                 return false;
 
+            if (!await AddUserToDefaultRole(user))
+            {
+                return false;
+            }
+
             var decodedToken = WebEncoders.Base64UrlDecode(token);
             string normalToken = Encoding.UTF8.GetString(decodedToken);
 
             var result = await _userManager.ConfirmEmailAsync(user, normalToken);
 
             return result.Succeeded;
+        }
+
+        private async Task<bool> AddUserToDefaultRole(IdentityUser user)
+        {
+            var usersInRoles = await _userManager.GetUsersInRoleAsync("SuperAdmin");
+
+            IdentityResult addedToRole;
+
+            if (usersInRoles == null || usersInRoles.Count == 0)
+            {
+                addedToRole = await _userManager.AddToRoleAsync(user, "SuperAdmin");
+            }
+            else
+            {
+                addedToRole = await _userManager.AddToRoleAsync(user, "Admin");
+            }
+            if (addedToRole.Succeeded)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
