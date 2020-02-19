@@ -40,11 +40,13 @@ namespace Api
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>(
-                  options => { 
+                  options =>
+                  {
                       options.SignIn.RequireConfirmedAccount = true;
                       options.User.RequireUniqueEmail = true;
                   })
-                    .AddEntityFrameworkStores<AnimalContext>();
+                    .AddEntityFrameworkStores<AnimalContext>()
+                    .AddDefaultTokenProviders();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             services

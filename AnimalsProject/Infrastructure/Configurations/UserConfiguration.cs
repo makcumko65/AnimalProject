@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.Configurations
 {
@@ -15,7 +12,8 @@ namespace Infrastructure.Configurations
                 new IdentityUser
                 {
                     Id = "1",
-                    Email = "pets.adoption.service@gmail.com"
+                    Email = "pets.adoption.service@gmail.com",
+                    NormalizedEmail = "PETS.ADOPTION.SERVICE@GMAIL.COM"
                 });
         }
     }

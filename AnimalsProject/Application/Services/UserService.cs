@@ -40,12 +40,15 @@ namespace Application.Services
             if (model == null)
                 return false;
 
-            var admin = await _userManager.FindByEmailAsync(model.Email);
+            var normalizedEmail = model.Email.ToUpper();
+            var admin = await _userManager.FindByEmailAsync(normalizedEmail);
 
             if (admin == null)
             {
                 return false;
             }
+
+            admin.UserName = model.Email;
 
             var result = await _userManager.AddPasswordAsync(admin, model.Password);
 
@@ -75,7 +78,9 @@ namespace Application.Services
 
             if (signInResult.Succeeded)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
+                var normalizedEmail = model.Email.ToUpper();
+
+                var user = await _userManager.FindByEmailAsync(normalizedEmail);
 
                 var tokenService = new TokenService(_configuration, _userManager);
 

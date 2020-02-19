@@ -17,7 +17,7 @@ namespace Api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(AdminDto admin)
+        public async Task<IActionResult> Login([FromBody]AdminDto admin)
         {
             var token = await _service.LoginAsync(admin);
             if (token != null)
@@ -27,7 +27,7 @@ namespace Api.Controllers
             return BadRequest(admin);
         }
         [HttpPost("register")]
-        public async Task<IActionResult> Register(AdminDto admin)
+        public async Task<IActionResult> Register([FromBody]AdminDto admin)
         {
             var isRegisterSuccessful = await _service.RegisterAsync(admin);
 
