@@ -73,6 +73,8 @@ namespace Api
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMainAdminService, MainAdminService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
