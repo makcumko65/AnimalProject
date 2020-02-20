@@ -22,6 +22,8 @@ namespace Application.DTO
         public double WithersHeight { get; set; }
         public double NeckCircumference { get; set; }
         public bool IsAdopted { get; set; }
+        public bool IsHidden { get; set; }
+        public DateTime FoundDate { get; set; }
         public bool ContinuatitonOfTreatment { get; set; }
         public long ChipNumber { get; set; }
         public int Gender { get; set; }

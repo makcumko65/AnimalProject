@@ -1,3 +1,7 @@
+using Application.Interfaces;
+using Application.Mapper;
+using Application.Services;
+using AutoMapper;
 using Domain.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -42,8 +46,17 @@ namespace Api
                     Configuration
                     .GetConnectionString("AnimalProjectConnectionString"));
             });
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AnimalMapper());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            // Add Books Service
+            services.AddScoped<IAnimalService, AnimalService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

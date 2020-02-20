@@ -1,6 +1,7 @@
 ﻿using Domain.Common;
 using Domain.Enums;
-using System;   
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
 namespace Domain.Models
@@ -17,12 +18,17 @@ namespace Domain.Models
             AnimalDefects = new List<AnimalDefects>();
             Images = new List<Image>();
         }
-        public long Id { get; set; }
+ 
+        public long Id { get; set; } 
+        public string Name { get; set; }
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         public double Weight { get; set; }
         public double WithersHeight { get; set; }
-        public double NeckCircumference { get; set; }
+        public double NeckCircumference { get; set; }    
         public bool IsAdopted { get; set; }
+        public bool IsHidden { get; set; }
+        public DateTime FoundDate { get; set; }
         public bool ContinuatitonOfTreatment { get; set; }
         public long ChipNumber { get; set; }
         public Gender Gender { get; set; }

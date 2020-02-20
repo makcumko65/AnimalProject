@@ -4,14 +4,16 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20200218184118_NameAdding")]
+    partial class NameAdding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,16 +133,10 @@ namespace Infrastructure.Migrations
                     b.Property<long>("FoodId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("FoundDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAdopted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsHidden")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
@@ -186,10 +182,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2017, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 2L,
-                            FoundDate = new DateTime(2018, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 1,
                             IsAdopted = true,
-                            IsHidden = false,
                             Name = "Lola",
                             NeckCircumference = 9.1999999999999993,
                             Sterialization = 2,
@@ -205,10 +199,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
-                            FoundDate = new DateTime(2018, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Josh",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
@@ -224,10 +216,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 3L,
-                            FoundDate = new DateTime(2018, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Jimbo",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 1,
@@ -243,10 +233,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2018, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
-                            FoundDate = new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 1,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Arnold",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
@@ -262,10 +250,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2019, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 2L,
-                            FoundDate = new DateTime(2019, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Sonia",
                             NeckCircumference = 1.2,
                             Sterialization = 0,
@@ -281,10 +267,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
-                            FoundDate = new DateTime(2019, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Havoc",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 2,
@@ -300,10 +284,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
-                            FoundDate = new DateTime(2019, 8, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Khora",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
@@ -319,10 +301,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2018, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
-                            FoundDate = new DateTime(2018, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 1,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Alpaca",
                             NeckCircumference = 1.2,
                             Sterialization = 1,
@@ -338,10 +318,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 3L,
-                            FoundDate = new DateTime(2018, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Bee",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
@@ -357,10 +335,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2016, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 2L,
-                            FoundDate = new DateTime(2018, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 1,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Puma",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
@@ -376,10 +352,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
-                            FoundDate = new DateTime(2020, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Aladin",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
@@ -395,10 +369,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
-                            FoundDate = new DateTime(2018, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Alkadin",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
@@ -414,10 +386,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2018, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 1L,
-                            FoundDate = new DateTime(2018, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = false,
-                            IsHidden = false,
                             Name = "Neo",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
@@ -433,10 +403,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = false,
                             DateOfBirth = new DateTime(2012, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 3L,
-                            FoundDate = new DateTime(2015, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 1,
                             IsAdopted = true,
-                            IsHidden = false,
                             Name = "Theo",
                             NeckCircumference = 0.20000000000000001,
                             Sterialization = 0,
@@ -452,10 +420,8 @@ namespace Infrastructure.Migrations
                             ContinuatitonOfTreatment = true,
                             DateOfBirth = new DateTime(2014, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FoodId = 2L,
-                            FoundDate = new DateTime(2018, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Gender = 0,
                             IsAdopted = true,
-                            IsHidden = true,
                             Name = "Baron",
                             NeckCircumference = 10.199999999999999,
                             Sterialization = 0,
