@@ -7,6 +7,6 @@ namespace Application.Interfaces
     public interface IAnimalService
     {
         Task<IEnumerable<AnimalDto>> GetAllAnimals();
-        Task Update(AnimalDto animal);
+        Task UpdateAnimal(AnimalDto animal);
     }
 }

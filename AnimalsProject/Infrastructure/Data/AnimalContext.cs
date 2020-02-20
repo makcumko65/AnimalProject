@@ -10,6 +10,7 @@ namespace Infrastructure.Data
         public AnimalContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Animal> Animals { get; set; }
+        public DbSet<AnimalNeeds> AnimalNeeds { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Food> Foods { get; set; }

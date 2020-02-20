@@ -39,7 +39,7 @@ namespace Infrastructure.Repositories
             return await context.Set<TEntity>().ToListAsync();
         }
 
-        public async ValueTask<TEntity> GetByIdAsync(int id)
+        public async ValueTask<TEntity> GetByIdAsync(long id)
         {
             return await context.Set<TEntity>().FindAsync(id);
         }
@@ -71,5 +71,7 @@ namespace Infrastructure.Repositories
             context.Set<TEntity>().Update(obj);
             await SaveAsync();
         }
+
+        public DbSet<TEntity> Entities => context.Set<TEntity>();
     }
 }
