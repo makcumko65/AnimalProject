@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
+using SendGrid;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,35 +21,27 @@ namespace Application.Services
 
         private readonly IConfiguration _configuration;
 
-        private readonly IEmailSender _emailService;
-
         public UserService(UserManager<IdentityUser> userManager,
                            SignInManager<IdentityUser> signInManager,
                            IConfiguration configuration,
-                           IEmailSender emailService,
                            IHostingEnvironment envorinment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
-            _emailService = emailService;
             _environment = envorinment;
         }
 
-        public async Task<bool> RegisterAsync(AdminDto model)
+        public async Task<Response> RegisterAsync(AdminDto model)
         {
-            if (model == null)
-                return false;
-
             var normalizedEmail = model.Email.ToUpper();
+
             var admin = await _userManager.FindByEmailAsync(normalizedEmail);
 
             if (admin == null)
             {
-                return false;
+                return null;
             }
-
-            admin.UserName = model.Email;
 
             var result = await _userManager.AddPasswordAsync(admin, model.Password);
 
@@ -65,11 +58,12 @@ namespace Application.Services
 
                 var formatedTemplateContent = string.Format(emailTemplateService.GetTemplateContent(), url);
 
-                await _emailService.SendEmailAsync(admin.Email, "Confirmation email", formatedTemplateContent);
+                var emailService = new EmailService(_configuration);
 
-                return true;
+                return await emailService.SendEmailAsync(admin.Email, "Confirmation email", formatedTemplateContent);
+                
             }
-            return false;
+            return null;
         }
 
         public async Task<string> LoginAsync(AdminDto model)
@@ -84,7 +78,7 @@ namespace Application.Services
 
                 var tokenService = new TokenService(_configuration, _userManager);
 
-                return await tokenService.GenerateJwtToken(model.Email, user);
+                return await tokenService.GenerateJwtToken(user);
             }
             return null;
 
@@ -93,6 +87,7 @@ namespace Application.Services
         public async Task<bool> ConfirmEmailAsync(string userId, string token)
         {
             var user = await _userManager.FindByIdAsync(userId);
+
             if (user == null)
                 return false;
 
@@ -123,11 +118,8 @@ namespace Application.Services
             {
                 addedToRole = await _userManager.AddToRoleAsync(user, "Admin");
             }
-            if (addedToRole.Succeeded)
-            {
-                return true;
-            }
-            return false;
+
+            return addedToRole.Succeeded;
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using NUnit.Framework;
-namespace Application.Tests
+namespace Application.Tests.Services
 {
     [TestFixture]
     public class EmailTemplateServiceTest
@@ -12,13 +12,11 @@ namespace Application.Tests
         public void GetTemlateContent_ReturnsHtml_AsString()
         {
             var hostingMock = new Mock<IHostingEnvironment>();
+            hostingMock.Setup(host => host.WebRootPath).Returns(@"C:\Users\vynar\source\repos\InternalProject\New\AnimalProject\AnimalsProject\Api\wwwroot");
 
             var configurationMock = new Mock<IConfiguration>();
-
-            hostingMock.Setup(host => host.WebRootPath).Returns(@"C:\Users\vynar\source\repos\InternalProject\AnimalProject\AnimalsProject\Api\wwwroot");
-
             configurationMock.Setup(config => config["EmailTemplate"]).Returns("EmailConfirmationTemplate.html");
-
+            
             var emailTemplateService = new EmailTemplateService(configurationMock.Object, hostingMock.Object);
 
             var content = emailTemplateService.GetTemplateContent();

@@ -29,14 +29,14 @@ namespace Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody]AdminDto admin)
         {
-            var isRegisterSuccessful = await _service.RegisterAsync(admin);
+            var response = await _service.RegisterAsync(admin);
 
-            if (isRegisterSuccessful)
+            if (response != null)
             {
-                return CreatedAtAction(nameof(Register), admin);
+                return Ok(response);
             }
 
-            return BadRequest(admin);
+            return BadRequest(new { admin, response });
         }
 
         // /api/account/confirmemail?userid&token
@@ -50,10 +50,10 @@ namespace Api.Controllers
 
             if (isConfirmed)
             {
-                return Ok(userId);
+                return Ok(new { userId, token });
             }
 
-            return BadRequest(new {userId, token});
+            return BadRequest(new { userId, token });
         }
     }
 }

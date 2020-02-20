@@ -76,7 +76,7 @@ namespace Api
                 });
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMainAdminService, MainAdminService>();
 

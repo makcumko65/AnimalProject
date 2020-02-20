@@ -1,11 +1,12 @@
 ﻿using Application.DTO;
+using SendGrid;
 using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
     public interface IUserService
     {
-        Task<bool> RegisterAsync(AdminDto model);
+        Task<Response> RegisterAsync(AdminDto model);
 
         Task<string> LoginAsync(AdminDto model);
 

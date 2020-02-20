@@ -22,12 +22,12 @@ namespace Application.Services
             _configuration = configuration;
         }
 
-        public async Task<string> GenerateJwtToken(string email, IdentityUser user)
+        public async Task<string> GenerateJwtToken(IdentityUser user)
         {
             var roles = await _userManager.GetRolesAsync(user);
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };

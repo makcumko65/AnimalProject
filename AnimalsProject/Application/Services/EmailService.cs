@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public class EmailSender: IEmailSender
+    public class EmailService: IEmailService
     {
         private readonly IConfiguration Configuration;
 
-        public EmailSender(IConfiguration configuration)
+        public EmailService(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public Task SendEmailAsync(string email, string subject, string message)
+        public Task<Response> SendEmailAsync(string email, string subject, string message)
         {
             return Execute(Configuration["SendGrid:SendGridKey"], subject, message, email);
         }
 
-        private Task Execute(string apiKey, string subject, string message, string email)
+        private Task<Response> Execute(string apiKey, string subject, string message, string email)
         {
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
