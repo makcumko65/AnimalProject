@@ -45,12 +45,12 @@ namespace Api.Controllers
             return defect;
         }
 
-        //// PUT: api/Defect
-        //[HttpPut]
-        //public async Task PutDefect([FromBody]DefectDto defect)
-        //{
-        //    await _defectService.UpdateDefect(defect);
-        //}
+        // PUT: api/Defect
+        [HttpPut]
+        public async Task PutDefect([FromBody]DefectDto defect)
+        {
+            await _defectService.UpdateDefect(defect);
+        }
 
         // POST: api/Defect
         [HttpPost]
