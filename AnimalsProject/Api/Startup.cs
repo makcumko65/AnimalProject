@@ -1,6 +1,8 @@
 using Application.Interfaces;
 using Application.Services;
+using Application.Validators;
 using Domain.Interfaces;
+using FluentValidation.AspNetCore;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -32,6 +34,8 @@ namespace Api
         {
             services.AddControllers();
 
+            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AdminValidator>());
+
             services.AddDbContext<AnimalContext>(cfg =>
             {
                 cfg.UseSqlServer(
@@ -44,6 +48,7 @@ namespace Api
                   {
                       options.SignIn.RequireConfirmedAccount = true;
                       options.User.RequireUniqueEmail = true;
+                      options.Password.RequireNonAlphanumeric = false;
                   })
                     .AddEntityFrameworkStores<AnimalContext>()
                     .AddDefaultTokenProviders();
