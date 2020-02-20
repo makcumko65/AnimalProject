@@ -97,6 +97,11 @@ namespace Application.Services
         public async Task UpdateDefect(DefectDto defect)
         {
             var tempDefect = await _defectRepository.GetByIdAsync(defect.Id);
+            tempDefect.Type = defect.Type;
+            tempDefect.Created = defect.Created;
+            tempDefect.CreatedBy = defect.CreatedBy;
+            tempDefect.LastModified = defect.LastModified;
+            tempDefect.LastModifiedBy = defect.LastModifiedBy;
             await _defectRepository.Update(tempDefect);
             await _defectRepository.SaveAsync();
         }
