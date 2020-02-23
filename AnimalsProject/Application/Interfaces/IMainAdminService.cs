@@ -7,7 +7,6 @@ namespace Application.Interfaces
 {
     public interface IMainAdminService
     {
-        Task<bool> AddEmailAsync(AdminEmailDto model);
-        IEnumerable<IdentityUser> GetUnconfirmedAdmins();
+        Task<bool> AddEmailOfNewAdminAsync(AdminEmailDto model);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -19,19 +20,13 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNewEmailAsync(AdminEmailDto model)
+        public async Task<IActionResult> AddEmailOfNewAdminAsync(AdminEmailDto model)
         {
-            if (ModelState.IsValid && await _adminService.AddEmailAsync(model))
+            if (ModelState.IsValid && await _adminService.AddEmailOfNewAdminAsync(model))
             {
-                return Ok();
+                return Ok(model);
             }
-            return BadRequest();
-        }
-
-        [HttpGet]
-        public IEnumerable<IdentityUser> GetUnconfirmedAdmins()
-        {
-            return _adminService.GetUnconfirmedAdmins();
+            return BadRequest(model);
         }
     }
 }
