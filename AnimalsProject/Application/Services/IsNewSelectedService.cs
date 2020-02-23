@@ -34,7 +34,7 @@ namespace Application.Services
             {
                 FoundDate = animal.FoundDate
             };
-        }
+        } 
 
         public async Task DeleteIsNewById(long id)
         {

@@ -22,7 +22,7 @@ namespace Api.Controllers
             await _isNewService.UpdateIsNewCheckbox(animal);
         }
 
-        // GET: api/Defect/5
+        // GET: api/IsNew/5
         [HttpGet("{id}")]
         public async Task<ActionResult<IsNewDto>> GetIsNew(long id)
         {
@@ -38,7 +38,7 @@ namespace Api.Controllers
 
         // DELETE: api/IsNew/3
         [HttpDelete("{id}")]
-        public async Task<ActionResult<IsNewDto>> DeleteDefect(long id)
+        public async Task<ActionResult<IsNewDto>> DeleteIsNew(long id)
         {
             var isNew = await _isNewService.GetIsNewById(id);
             if (isNew == null)
