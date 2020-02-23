@@ -22,9 +22,10 @@ namespace Api.Controllers
             await _isNewService.UpdateIsNewCheckbox(animal);
         }
 
-        // GET: api/IsNew/5
+        // GET: api/IsNew/ByAnimal/1
         [HttpGet("{id}")]
-        public async Task<ActionResult<IsNewDto>> GetIsNew(long id)
+        [Route("ByAnimal/{animalId}")]
+        public async Task<ActionResult<IsNewDto>> GetIsNewByAnimal(long id)
         {
             var animal = await _isNewService.GetIsNewById(id);
 
@@ -36,7 +37,7 @@ namespace Api.Controllers
             return Ok(animal);
         }
 
-        // DELETE: api/IsNew/3
+        // DELETE: api/IsNew/1
         [HttpDelete("{id}")]
         public async Task<ActionResult<IsNewDto>> DeleteIsNew(long id)
         {
