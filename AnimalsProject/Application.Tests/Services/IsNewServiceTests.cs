@@ -28,7 +28,7 @@ namespace Application.Tests.Services
         public void DeleteIsNew_SuccessOperation()
         {
             // Arrange
-
+            
             // Act
 
             // Assert
