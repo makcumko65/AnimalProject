@@ -57,6 +57,7 @@ namespace Api
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             // Add Books Service
             services.AddScoped<IAnimalService, AnimalService>();
+            services.AddScoped<IIsNewSelectedService, IsNewSelectedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
